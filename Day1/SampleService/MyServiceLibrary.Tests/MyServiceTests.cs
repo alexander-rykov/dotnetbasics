@@ -7,7 +7,8 @@ namespace MyServiceLibrary.Tests
     public class MyServiceTests
     {
         [TestMethod]
-        public void TestMethod1()
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void Add_NullUser_ExceptionThrown()
         {
         }
     }

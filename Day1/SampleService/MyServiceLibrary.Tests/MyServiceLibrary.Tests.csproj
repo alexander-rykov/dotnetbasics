@@ -53,6 +53,12 @@
     <Compile Include="MyServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MyServiceLibrary\MyServiceLibrary.csproj">
+      <Project>{83615058-2919-4ca9-84c2-5368cef9f281}</Project>
+      <Name>MyServiceLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
