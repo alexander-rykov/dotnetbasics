@@ -2,7 +2,7 @@
 
 namespace ValueAndReferenceTypes.Tests
 {
-    public class EqualsOperator
+    public class EqualsOperatorTests
     {
         [Fact]
         public void EqualsOperator_WithSameClasses_ReturnsTrue()

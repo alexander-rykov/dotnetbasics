@@ -61,7 +61,7 @@
   <ItemGroup>
     <Compile Include="ClassWithCounterTests.cs" />
     <Compile Include="CounterTests.cs" />
-    <Compile Include="EqualsOperator.cs" />
+    <Compile Include="EqualsOperatorTests.cs" />
     <Compile Include="InstanceEqualsTests.cs" />
     <Compile Include="ReferenceEqualsTests.cs" />
     <Compile Include="MyClassTests.cs" />
@@ -75,6 +75,9 @@
       <Project>{02acffbe-5d63-4a9c-a216-822c61c9201b}</Project>
       <Name>ValueAndReferenceTypes</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

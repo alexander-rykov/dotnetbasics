@@ -17,7 +17,7 @@ namespace ValueAndReferenceTypes
 
         public static IList<Counter> CreateListOfMutableStructs(int count)
         {
-            return Enumerable.Range(1, 10).Select(i => new Counter()).ToArray();
+            return Enumerable.Range(1, count).Select(i => new Counter()).ToArray();
         }
 
         public static void IncrementCounters(IList<Counter> list)
