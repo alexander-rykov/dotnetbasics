@@ -46,7 +46,7 @@ namespace DoSomethingClient
                 ApplicationBase = AppDomain.CurrentDomain.BaseDirectory,
                 PrivateBinPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "MyDomain")
             };
-            AppDomain domain = AppDomain.CreateDomain("MyDomain", null, appDomainSetup);
+            AppDomain domain = null;
             var loader = (DomainAssemblyLoader)domain.CreateInstanceAndUnwrap(Assembly.GetExecutingAssembly().FullName, typeof(DomainAssemblyLoader).FullName);
 
             try
