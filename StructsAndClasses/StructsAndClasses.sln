@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StructAndClassesInMemory", "StructAndClassesInMemory\StructAndClassesInMemory.csproj", "{53228F97-7B74-4C3C-AC7C-786EB64DAB1D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StructsAndClassesInMemory", "StructsAndClassesInMemory\StructsAndClassesInMemory.csproj", "{53228F97-7B74-4C3C-AC7C-786EB64DAB1D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
