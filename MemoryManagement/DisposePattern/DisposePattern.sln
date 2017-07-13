@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FixMe", "FixMe\FixMe.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemoryAllocation", "MemoryAllocation\MemoryAllocation.csproj", "{3989F713-4F30-425D-9C87-B6172EA04C27}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisposableStruct", "DisposableStruct\DisposableStruct.csproj", "{1B4C3C03-C69A-4D77-9372-CA8E7461C8E6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{3989F713-4F30-425D-9C87-B6172EA04C27}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3989F713-4F30-425D-9C87-B6172EA04C27}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3989F713-4F30-425D-9C87-B6172EA04C27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B4C3C03-C69A-4D77-9372-CA8E7461C8E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B4C3C03-C69A-4D77-9372-CA8E7461C8E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B4C3C03-C69A-4D77-9372-CA8E7461C8E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B4C3C03-C69A-4D77-9372-CA8E7461C8E6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
