@@ -40,7 +40,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BoxingExample.cs" />
     <Compile Include="ClassWithCounter.cs" />
     <Compile Include="Counter.cs" />
     <Compile Include="MyClass.cs" />
