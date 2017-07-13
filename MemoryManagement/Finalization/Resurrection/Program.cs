@@ -22,7 +22,7 @@ namespace Resurrection
         }
     }
 
-    // NOTE Use GC.Collect() and GC.ReRegisterForFinalize() methods to resurrect an instance of the MyFinalizedClass class when it gets finalized.
+    // Use GC.Collect(), GC.WaitForPendingFinalizers() and GC.ReRegisterForFinalize() methods to resurrect an instance of the MyFinalizedClass class when it gets finalized.
     public class Program
     {
         public static bool ContinueResurrection = true;
@@ -40,7 +40,7 @@ namespace Resurrection
             do
             {
                 Thread.Sleep(200);
-                // TODO: Add code here to assure that finalization is called and all finalizers completed.
+                // TODO: Add code here to assure that finalization is completed.
 
             } while (!Console.KeyAvailable);
 
