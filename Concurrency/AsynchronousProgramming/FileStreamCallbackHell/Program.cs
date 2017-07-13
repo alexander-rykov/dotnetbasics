@@ -6,12 +6,9 @@ namespace FileStreamCallbackHell
 {
     class Program
     {
-        private static ManualResetEvent _mre1 = new ManualResetEvent(false);
-        private static ManualResetEvent _mre2 = new ManualResetEvent(false);
-        private static ManualResetEvent _mre3 = new ManualResetEvent(false);
-        private static ManualResetEvent _mre4 = new ManualResetEvent(false);
-        private static ManualResetEvent _mre5 = new ManualResetEvent(false);
-        private static ManualResetEvent _mre6 = new ManualResetEvent(false);
+        private static ManualResetEvent completionOfPreviousOperation = new ManualResetEvent(false);
+        private static ManualResetEvent completionOfAllOperations = new ManualResetEvent(false);
+        private static ManualResetEvent fileStreamClosed = new ManualResetEvent(false);
 
         static void Main(string[] args)
         {
@@ -32,11 +29,12 @@ namespace FileStreamCallbackHell
 
                 var result = fs.BeginWrite(buffer, 0, buffer.Length, new AsyncCallback(BeginWriteCompleted), buffer);
 
-                _mre1.WaitOne();
+                completionOfPreviousOperation.WaitOne();
             }
 
-            _mre5.Set();
-            _mre4.WaitOne();
+            completionOfPreviousOperation.Reset();
+            fileStreamClosed.Set();
+            completionOfAllOperations.WaitOne();
 
             File.Delete("file.bin");
 
@@ -50,8 +48,9 @@ namespace FileStreamCallbackHell
 
             var buffer = (byte[])result.AsyncState;
 
-            _mre1.Set();
-            _mre5.WaitOne();
+            completionOfPreviousOperation.Set();
+            fileStreamClosed.WaitOne();
+            fileStreamClosed.Reset();
 
             using (var fs = new FileStream("file.bin", FileMode.Open, FileAccess.Read, FileShare.Read, 1024, true))
             {
@@ -59,10 +58,11 @@ namespace FileStreamCallbackHell
 
                 fs.BeginRead(buffer, 0, buffer.Length, new AsyncCallback(FirstBeginReadCompleted), buffer);
 
-                _mre2.WaitOne();
+                completionOfPreviousOperation.WaitOne();
             }
 
-            _mre6.Set();
+            completionOfPreviousOperation.Reset();
+            fileStreamClosed.Set();
         }
 
         private static void FirstBeginReadCompleted(IAsyncResult result)
@@ -71,8 +71,8 @@ namespace FileStreamCallbackHell
 
             var buffer = (byte[])result.AsyncState;
 
-            _mre2.Set();
-            _mre6.WaitOne();
+            completionOfPreviousOperation.Set();
+            fileStreamClosed.WaitOne();
 
             using (var fs = new FileStream("file.bin", FileMode.Open, FileAccess.Read, FileShare.Read, 1024, true))
             {
@@ -80,7 +80,7 @@ namespace FileStreamCallbackHell
 
                 fs.BeginRead(buffer, 0, buffer.Length, new AsyncCallback(SecondBeginReadCompleted), buffer);
 
-                _mre3.WaitOne();
+                completionOfPreviousOperation.WaitOne();
             }
         }
 
@@ -88,8 +88,8 @@ namespace FileStreamCallbackHell
         {
             Console.WriteLine("SecondBeginReadCompleted thread system ID {0}, managed ID {1}.", AppDomain.GetCurrentThreadId(), Thread.CurrentThread.ManagedThreadId);
 
-            _mre3.Set();
-            _mre4.Set();
+            completionOfPreviousOperation.Set();
+            completionOfAllOperations.Set();
         }
     }
 }
