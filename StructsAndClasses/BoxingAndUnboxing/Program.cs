@@ -7,6 +7,7 @@ namespace BoxingAndUnboxing
         static void Main(string[] args)
         {
             SimpleBoxingAndUnboxing.Example();
+            StructImplementsInterface.Example();
 
             Console.WriteLine("Press any key to exit.");
             Console.ReadLine();
