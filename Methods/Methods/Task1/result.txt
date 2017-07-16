@@ -1,0 +1,7 @@
+﻿Default name: 1, One, and 1.
+Default name: 2, Two, and 10.
+Default name: 3, default string, and 10.
+Provided name: 1, One, and 1.
+Provided name: 2, Two, and 10.
+Provided name: 3, default string, and 10.
+Default name: 3, default string, and 4.
