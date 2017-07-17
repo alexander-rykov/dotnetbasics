@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManagingThreads", "ManagingThreads\ManagingThreads.csproj", "{1015ADBD-32D5-4933-8AF5-FB5D445ADA86}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsingThreadLocalStorage", "UsingThreadLocalStorage\UsingThreadLocalStorage.csproj", "{299F61BB-C704-4A60-8F85-F487B865EBE4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsingThreadPool", "UsingThreadPool\UsingThreadPool.csproj", "{15DFBBA1-78FC-424A-A146-55CF5387B689}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{1015ADBD-32D5-4933-8AF5-FB5D445ADA86}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1015ADBD-32D5-4933-8AF5-FB5D445ADA86}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1015ADBD-32D5-4933-8AF5-FB5D445ADA86}.Release|Any CPU.Build.0 = Release|Any CPU
-		{299F61BB-C704-4A60-8F85-F487B865EBE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{299F61BB-C704-4A60-8F85-F487B865EBE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{299F61BB-C704-4A60-8F85-F487B865EBE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{299F61BB-C704-4A60-8F85-F487B865EBE4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15DFBBA1-78FC-424A-A146-55CF5387B689}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15DFBBA1-78FC-424A-A146-55CF5387B689}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15DFBBA1-78FC-424A-A146-55CF5387B689}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15DFBBA1-78FC-424A-A146-55CF5387B689}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
