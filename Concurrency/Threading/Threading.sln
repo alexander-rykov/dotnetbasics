@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManagingThreads", "Managing
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsingThreadPool", "UsingThreadPool\UsingThreadPool.csproj", "{15DFBBA1-78FC-424A-A146-55CF5387B689}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaitingForAllAndAny", "WaitingForAllAndAny\WaitingForAllAndAny.csproj", "{18BAD41C-A318-4486-BB68-6E41840B4C02}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsingMutexForSequence", "UsingMutexForSequence\UsingMutexForSequence.csproj", "{FAA292C8-8EC5-4A3B-9F3C-3F970BF5EFFB}"
 EndProject
 Global
@@ -25,10 +23,6 @@ Global
 		{15DFBBA1-78FC-424A-A146-55CF5387B689}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15DFBBA1-78FC-424A-A146-55CF5387B689}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{15DFBBA1-78FC-424A-A146-55CF5387B689}.Release|Any CPU.Build.0 = Release|Any CPU
-		{18BAD41C-A318-4486-BB68-6E41840B4C02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{18BAD41C-A318-4486-BB68-6E41840B4C02}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{18BAD41C-A318-4486-BB68-6E41840B4C02}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{18BAD41C-A318-4486-BB68-6E41840B4C02}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FAA292C8-8EC5-4A3B-9F3C-3F970BF5EFFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FAA292C8-8EC5-4A3B-9F3C-3F970BF5EFFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FAA292C8-8EC5-4A3B-9F3C-3F970BF5EFFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
