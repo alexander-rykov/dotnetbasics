@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace EventAndLambda
 {
@@ -19,7 +20,7 @@ namespace EventAndLambda
                     Console.WriteLine(o.GetType());
                 };
 
-                new System.Xml.Serialization.XmlSerializer(typeof(object), new Type[] { });
+                Thread.Sleep(10);
             }
             while (!Console.KeyAvailable);
         }

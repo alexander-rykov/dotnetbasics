@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace XmlSerializer
 {
@@ -13,6 +14,8 @@ namespace XmlSerializer
             do
             {
                 new System.Xml.Serialization.XmlSerializer(typeof(object), new Type[] { });
+
+                Thread.Sleep(10);
             }
             while (!Console.KeyAvailable);
         }
