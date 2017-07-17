@@ -84,7 +84,7 @@ namespace UsingThreadPool
 
             stopwatch.Stop();
 
-            Console.WriteLine("Total time is {0}s.", stopwatch.ElapsedMilliseconds / 1000);
+            Console.WriteLine("Total time is {0}s. Total result amount is {1}.", stopwatch.ElapsedMilliseconds / 1000, GetResultsAmount(results));
 
             Console.WriteLine("Press any key to exit.");
             Console.ReadKey();
@@ -113,6 +113,20 @@ namespace UsingThreadPool
             {
                 Console.WriteLine("!!! Error !!! Worker threads amount is not set. Change the MaxWorkerThreads to find the minimum number allowed.");
             }
+        }
+
+        private static int GetResultsAmount(string[] results)
+        {
+            int resultsAmount = 0;
+            for (int i = 0; i < results.Length; i++)
+            {
+                if (string.IsNullOrEmpty(results[i]) == false)
+                {
+                    resultsAmount++;
+                }
+            }
+
+            return resultsAmount;
         }
     }
 }
