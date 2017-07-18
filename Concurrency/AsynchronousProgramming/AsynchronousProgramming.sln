@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26430.15
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileStreamApm", "FileStreamApm\FileStreamApm.csproj", "{E48840BB-2AB1-4E7C-8C41-7262D429B79C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileStreamAsync", "FileStreamAsync\FileStreamAsync.csproj", "{A67935A5-11A5-4A9F-80EC-6820C592B81F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileStreamCallbackHell", "FileStreamCallbackHell\FileStreamCallbackHell.csproj", "{96ED02D9-2D1A-450D-A79A-9E92CCB22B95}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncAwaitWinForms", "AsyncAwaitWinForms\AsyncAwaitWinForms.csproj", "{DE969931-086E-4CC9-B416-1C294AAC31A9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{96ED02D9-2D1A-450D-A79A-9E92CCB22B95}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{96ED02D9-2D1A-450D-A79A-9E92CCB22B95}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{96ED02D9-2D1A-450D-A79A-9E92CCB22B95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE969931-086E-4CC9-B416-1C294AAC31A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE969931-086E-4CC9-B416-1C294AAC31A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE969931-086E-4CC9-B416-1C294AAC31A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE969931-086E-4CC9-B416-1C294AAC31A9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
