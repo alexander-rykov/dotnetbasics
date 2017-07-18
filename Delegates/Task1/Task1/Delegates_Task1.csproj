@@ -48,8 +48,8 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SomeHelper.cs" />
     <Compile Include="AnonymousDelegates.cs" />
+    <Compile Include="AnonymousDelegatesTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
