@@ -11,6 +11,7 @@ using System.Threading;
 
 namespace ManagingThreads
 {
+    // TODO The code in this application contains an issue with timeouts. That leads to a huge amount of records in console.
     public class Program
     {
         private const int ThreadsCount = 10;
@@ -63,12 +64,12 @@ namespace ManagingThreads
 
                 // TODO Modify the next line to create a new worker thread using WorkerThreadStart delegate as a thread start and save it into threads array.
                 threads[i] = null;
-                // TODO Run recently created worker thread and pass threadNumber and WorkTimeout as a parameter.
+                // TODO Run recently created worker thread and pass threadNumber and WorkTimeout as a parameter using WorkerThreadParameters class.
             }
 
             for (int i = 0; i < threads.Length; i++)
             {
-                // TODO Wait unit worker thread with thread number == i will finish its work. Use an instance method of the Thread class.
+                // TODO Wait until worker thread with thread number == i will finish its work. Use an instance method of the Thread class.
             }
 
             Console.WriteLine("--- Starter thread {0}: Completed. ---", Thread.CurrentThread.ManagedThreadId);
