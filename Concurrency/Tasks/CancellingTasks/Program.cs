@@ -70,7 +70,7 @@ namespace CancellingTasks
             Console.WriteLine("Press any key to stop the task.");
             Console.ReadKey();
 
-            TaskStatus taskStatus;
+            TaskStatus taskStatus = TaskStatus.Created;
 
             // TODO Set the current task status.
 
