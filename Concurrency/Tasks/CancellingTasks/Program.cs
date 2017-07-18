@@ -16,19 +16,12 @@ namespace CancellingTasks
         {
             string[] urls =
             {
-                "http://microsoft.com",
                 "http://www.learnasync.net/",
                 "http://www.albahari.com/threading/",
                 "http://jonskeet.uk/csharp/threads/",
-                "https://stephencleary.com/book/",
-                "https://docs.microsoft.com/en-us/dotnet/standard/threading/the-managed-thread-pool",
-                "https://mva.microsoft.com/search/SearchResults.aspx#!q=Jeffrey%20Richter%20Threading&lang=1033",
-                "https://channel9.msdn.com/Events/Build/2012/3-011",
-                "http://asd234efwdw23reefsfdsfds.com",
+                // TODO Uncomment after completing the task.
+                // "http://asd234efwdw23reefsfdsfds.com",
                 "https://codewala.net/2015/07/29/concurrency-vs-multi-threading-vs-asynchronous-programming-explained/",
-                "http://dotnetpattern.com/multi-threading-interview-questions",
-                "https://www.pluralsight.com/courses/skeet-async",
-                "https://rsdn.org/article/dotnet/CSThreading1.xml"
             };
 
             var cts = new CancellationTokenSource();
@@ -66,6 +59,36 @@ namespace CancellingTasks
 
                 // TODO Set task result in list.ToArray().
             };
+
+            // TODO Run the block below if the task completed successfully.
+            {
+                Console.WriteLine("Task completed successfully.");
+
+                Tuple<string, int>[] results = null;
+
+                // TODO Set results in task result.
+
+                foreach (var tuple in results)
+                {
+                    Console.WriteLine("{0} - {1}", tuple.Item1, tuple.Item2);
+                }
+
+            };
+
+            // TODO Run the block below if the task was cancelled.
+            {
+                Console.WriteLine("Task was cancelled.");
+            };
+
+            // TODO Run the block below if the task failed.
+            {
+                string exceptionMessage = string.Empty;
+
+                // TODO Set exceptionMessage in inner exception's message.
+
+                Console.WriteLine("Task failed with an exception: {0}", exceptionMessage);
+            };
+
 
             Console.WriteLine("Press any key to stop the task.");
             Console.ReadKey();
