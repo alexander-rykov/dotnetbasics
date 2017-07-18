@@ -4,9 +4,9 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UsingTasks
+namespace UsingContinuousTasks
 {
-    public class Program
+    class Program
     {
         public const string SearchWord = "Thread";
 
@@ -35,37 +35,67 @@ namespace UsingTasks
             {
                 var index = i;
 
-                // TODO Create a new task using static Task method, queue it to run, and save the task to tasks array. Use the block below as an Action delegate parameter.
+                // TODO Create a new task and queue it to run.
                 {
                     Console.WriteLine("Task {0} is started. Downloading {1}", Task.CurrentId, urls[index]);
 
                     var webClient = new WebClient();
-
                     var bytes = webClient.DownloadData(urls[index]);
-                    var resultString = Encoding.UTF8.GetString(bytes);
-                    var occurences = IndexesOf(resultString, SearchWord).Length;
 
                     Console.WriteLine("Task {0} is completed.", Task.CurrentId);
 
-                    // TODO Make occurences variable a task result.
-                }
+                    // TODO Set task result.
+                };
+
+                // TODO Create a new task as a continuation of the web-client task. This task should run only if the previous task completed successfully.
+                {
+                    Console.WriteLine("Task {0} is converting bytes to string.", Task.CurrentId);
+
+                    // TODO Set the result from the previous task.
+                    byte[] bytes = null;
+                    var resultString = Encoding.UTF8.GetString(bytes);
+
+                    // TODO Set task result.
+                };
+
+                // TODO Create a new task as a continuation of the web-client task. This task should run only if the previous task failed.
+                {
+                    // TODO Set Id of the previous task.
+                    int id = 0;
+
+                    // TODO Set inner exception message that happend in the previous task.
+                    string message = string.Empty;
+
+                    Console.WriteLine("Task {0} failed with exception: {1}", id, message);
+                };
+
+                // TODO Create a new task as a continuation of the get-string task. This task should run only if the previous task completed successfully.
+                {
+                    Console.WriteLine("Task {0} is returning string length.", Task.CurrentId);
+
+                    // TODO Set the result from the previous task.
+                    string resultString = string.Empty;
+
+                    var occurences = IndexesOf(resultString, SearchWord).Length;
+
+                    // TODO Set task result.
+                };
             }
 
             Console.WriteLine("Waiting for tasks to complete.");
-
             try
             {
                 // TODO Use tasks array to wait until all the tasks will complete their work.
             }
             catch
             {
-                // NOTE Eat an exception here because we will process this exception later.
+                // NOTE Eat an exception here because we do not care about it here.
             }
 
             Console.WriteLine("\nResults for searching '{0}' word:", SearchWord);
             for (int i = 0; i < urls.Length; i++)
             {
-                Console.WriteLine("{0} - {1}", urls[i], !tasks[i].IsFaulted ? tasks[i].Result.ToString() : tasks[i].Exception.InnerException.Message);
+                Console.WriteLine("{0} - {1}", urls[i], !(tasks[i].IsFaulted || tasks[i].IsCanceled) ? tasks[i].Result.ToString() : tasks[i].Status.ToString());
             }
 
             Console.WriteLine("Press any key to exit.");
