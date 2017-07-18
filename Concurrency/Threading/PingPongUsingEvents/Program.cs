@@ -65,7 +65,7 @@ namespace PingPongUsingEvents
 
             Console.ReadKey();
 
-            // TODO Сancel both ping and pong threads using cancellation token.
+            // TODO Сancel both ping and pong threads using cancellation token source.
 
             Console.WriteLine("Press any key to exit.");
             Console.ReadKey();
