@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
-namespace UsingTasks
+namespace CancellingTasks
 {
-    public class Program
+    class Program
     {
+        private const int TasksAmount = 20;
         public const string Token = "Thread";
 
-        public static void Main(string[] args)
+        static void Main(string[] args)
         {
             string[] urls =
             {
@@ -29,44 +31,59 @@ namespace UsingTasks
                 "https://rsdn.org/article/dotnet/CSThreading1.xml"
             };
 
-            var tasks = new Task<int>[urls.Length];
+            var cts = new CancellationTokenSource();
+            var ct = cts.Token;
 
-            for (int i = 0; i < tasks.Length; i++)
+            // TODO Create a new task with cancellation token and queue it.
             {
-                var index = i;
+                Console.WriteLine("Task is started.");
 
-                // TODO Create a new task using static Task method, queue it to run, and save the task to tasks array. Use the block below as an Action delegate parameter.
+                var webClient = new WebClient();
+
+                var list = new List<Tuple<string, int>>();
+
+                foreach (var url in urls)
                 {
-                    Console.WriteLine("Task {0} is started. Downloading {1}", Task.CurrentId, urls[index]);
+                    Console.WriteLine("Downloading {0}", url);
 
-                    var webClient = new WebClient();
+                    var bytes = webClient.DownloadData(url);
 
-                    var bytes = webClient.DownloadData(urls[index]);
+                    // TODO Cancel the task.
+
                     var resultString = Encoding.UTF8.GetString(bytes);
+
+                    // TODO Cancel the task.
+
                     var occurences = IndexesOf(resultString, Token).Length;
+                    list.Add(Tuple.Create(url, occurences));
 
-                    Console.WriteLine("Task {0} is completed.", Task.CurrentId);
+                    // TODO Cancel the task.
 
-                    // TODO Make occurences variable a task result.
+                    Task.Delay(100);
                 }
-            }
 
-            Console.WriteLine("Waiting for tasks to complete.");
+                Console.WriteLine("Task is completed.");
 
-            try
-            {
-                // TODO Use tasks array to wait until all the tasks will complete their work.
-            }
-            catch
-            {
-                // NOTE Eat an exception here because we will process this exception later.
-            }
+                // TODO Set task result in list.ToArray().
+            };
 
-            Console.WriteLine("\nResults for searching '{0}' word:", Token);
-            for (int i = 0; i < urls.Length; i++)
-            {
-                Console.WriteLine("{0} - {1}", urls[i], !tasks[i].IsFaulted ? tasks[i].Result.ToString() : tasks[i].Exception.InnerException.Message);
-            }
+            Console.WriteLine("Press any key to stop the task.");
+            Console.ReadKey();
+
+            TaskStatus taskStatus;
+
+            // TODO Set the current task status.
+
+            Console.WriteLine("Task status is {0}.", taskStatus);
+
+            cts.Cancel();
+
+            Console.WriteLine("Press any key to get task status.");
+            Console.ReadKey();
+
+            // TODO Set the current task status.
+
+            Console.WriteLine("Task status is {0}.", taskStatus);
 
             Console.WriteLine("Press any key to exit.");
             Console.ReadKey();

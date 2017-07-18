@@ -8,7 +8,7 @@ namespace UsingContinuousTasks
 {
     class Program
     {
-        public const string SearchWord = "Thread";
+        public const string Token = "Thread";
 
         public static void Main(string[] args)
         {
@@ -76,7 +76,7 @@ namespace UsingContinuousTasks
                     // TODO Set the result from the previous task.
                     string resultString = string.Empty;
 
-                    var occurences = IndexesOf(resultString, SearchWord).Length;
+                    var occurences = IndexesOf(resultString, Token).Length;
 
                     // TODO Set task result.
                 };
@@ -92,7 +92,7 @@ namespace UsingContinuousTasks
                 // NOTE Eat an exception here because we do not care about it here.
             }
 
-            Console.WriteLine("\nResults for searching '{0}' word:", SearchWord);
+            Console.WriteLine("\nResults for searching '{0}' word:", Token);
             for (int i = 0; i < urls.Length; i++)
             {
                 Console.WriteLine("{0} - {1}", urls[i], !(tasks[i].IsFaulted || tasks[i].IsCanceled) ? tasks[i].Result.ToString() : tasks[i].Status.ToString());
