@@ -43,11 +43,11 @@ namespace UsingAppDomains
 
             domain.SetData("MyMessage", "Hello there!");
 
-            // TODO Fix a issue with accessing to myClass variable by creating a new static method and passing it as a delegate.
-            domain.DoCallBack(() =>
+            // TODO Invoke an anonymous deleage as a callback in newly created app. domain.
             {
                 Console.WriteLine("{0}", AppDomain.CurrentDomain.GetData("MyMessage"));
 
+                // TODO Fix a issue with accessing to myClass variable by creating a new static method and passing it as a delegate.
                 if (myClass == null)
                 {
                     Console.WriteLine("MyClass is null.");
