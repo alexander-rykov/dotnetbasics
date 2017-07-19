@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
+using System.Xml;
 using MyInterfaces;
 
 namespace DoSomethingClient
@@ -35,7 +37,7 @@ namespace DoSomethingClient
                 }
             };
 
-            Method1(input);
+            //Method1(input);
             //Method2(input);
 
             Console.WriteLine("Press any key to exit.");
@@ -58,10 +60,10 @@ namespace DoSomethingClient
 
             try
             {
-                IDoSomething doSomething = null;
                 var assemblyString = "MyLibrary, Version=1.2.3.4, Culture=neutral, PublicKeyToken=f46a87b3d9a80705";
 
-                doSomething = loader.Load<IDoSomething>(assemblyString);
+                // NOTE You will get an exception about serialization issues. Try to fix that using SerializableAttribute or MarshalByRefObject.
+                IDoSomething doSomething = loader.Load<IDoSomething>(assemblyString);
                 var result = doSomething.DoSomething(input);
 
                 // TODO Put a breakpoint here and take a look at doSomething and result variables in the run time.
@@ -84,14 +86,24 @@ namespace DoSomethingClient
                 PrivateBinPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "MyDomain")
             };
 
-            // TODO: Create a domain with name MyDomain and setup from appDomainSetup.
+            // TODO Create a new domain with name MyDomain and appDomainSetup.
             AppDomain domain = null;
 
-            var loader = (DomainAssemblyLoader)domain.CreateInstanceAndUnwrap(Assembly.GetExecutingAssembly().FullName, typeof(DomainAssemblyLoader).FullName);
+            // TODO Create a new instance of DomainAssemblyLoader in MyDomain and unwrap it.
+            DomainAssemblyLoader loader = null;
 
             try
             {
-                Result result = null; // TODO: Use loader here.
+                var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"MyDomain\MyLibrary.dll");
+
+                // NOTE You will get an exception about serialization issues. Try to fix that using SerializableAttribute or MarshalByRefObject.
+                Result result = loader.LoadFile<IDoSomething, DoSomethingAttribute>(path, "DoSomething", input);
+
+                if (result.Value != 3)
+                {
+                    // If value != 3 that means that wrong service was called.
+                    Debugger.Break();
+                }
 
                 Console.WriteLine("Method2: {0}", result.Value);
             }
@@ -100,7 +112,7 @@ namespace DoSomethingClient
                 Console.WriteLine("Exception: {0}", e.Message);
             }
 
-            // TODO: Unload domain
+            // TODO Unload app. domain.
         }
     }
 }

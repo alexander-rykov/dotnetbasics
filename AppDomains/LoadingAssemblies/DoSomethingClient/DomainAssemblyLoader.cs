@@ -47,26 +47,42 @@ namespace DoSomethingClient
         // LoadFile() doesn't bind through Fusion at all - the loader just goes ahead and loads exactly what the caller requested.
         // It doesn't use either the Load or the LoadFrom context.
         // LoadFile() has a catch. Since it doesn't use a binding context, its dependencies aren't automatically found in its directory. 
-
-        // Usage:
-        // var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"MyDomain\MyLibrary.dll");
-        // result = loader.Load(path, input);
-        public Result LoadFile(string path, Input data)
+        public Result LoadFile<T, V>(string path, string methodName, Input data)
         {
-            // LoadFrom() goes through Fusion and can be redirected to another assembly at a different path
-            // but with that same identity if one is already loaded in the LoadFrom context.
+            // TODO Load an assembly using path.
+            Assembly assembly = null;
 
-            var assembly = Assembly.LoadFile(path);
-            var types = assembly.GetTypes();
+            // TODO Get all types that are loaded in the assembly.
+            Type[] types = null;
 
-            Type type = null; // TODO: Find first type that has DoSomething attribute and don't implement IDoSomething.
-            // TODO: MethodInfo mi = type.GetMethod("DoSomething");
-            Result result = null;
-            // TODO: result = mi.Invoke();
+            // TODO Get a type of an interface.
+            Type interfaceType = null;
+
+            // TODO Get a type of an attribute.
+            Type attributeType = null;
+
+            // Find first type that has DoSomething attribute and DO NOT implements IDoSomething.
+            Func<Type, bool> hasAttributeAndDontImplementsInterface = (Type t) => 
+                // TODO Specify condition to met all criteria.
+                false;
+
+            // TODO Search for type.
+            Type serviceType = null;
+
+            // TODO Create an instance using serviceType.
+            object service = null;
+
+            // TODO Get method info from service type using method name.
+            MethodInfo methodInfo = null;
+
+            // TODO Call the method with data as a parameter.
+            Result result = null; // (Result)methodInfo.Invoke();
 
             return result;
         }
 
+        // LoadFrom() goes through Fusion and can be redirected to another assembly at a different path
+        // but with that same identity if one is already loaded in the LoadFrom context.
         // More details: http://stackoverflow.com/questions/1477843/difference-between-loadfile-and-loadfrom-with-net-assemblies
         public Result LoadFrom(string fileName, Input data)
         {
