@@ -55,6 +55,13 @@ namespace DoSomethingClient
             // TODO Create a new domain with name MyDomain and appDomainSetup.
             AppDomain domain = null;
 
+            // TODO Subscribe to the event that will be raised when assembly is loaded.
+            {
+                // TODO Set a full name of an assembly that is loaded.
+                string assemblyFullName = string.Empty;
+                Console.WriteLine("Assembly {0} is loaded.", assemblyFullName);
+            };
+
             // TODO Create a new instance of DomainAssemblyLoader in MyDomain and unwrap it by using CreateInstanceAndUnwrap method and specifying class name.
             DomainAssemblyLoader loader = null; // domain.MethodName(Assembly.GetExecutingAssembly().FullName, typeof(ClassName).FullName);
 
@@ -88,6 +95,13 @@ namespace DoSomethingClient
 
             // TODO Create a new domain with name MyDomain and appDomainSetup.
             AppDomain domain = null;
+
+            // TODO Subscribe to the event that will be raised when assembly is loaded.
+            {
+                // TODO Set a full name of an assembly that is loaded.
+                string assemblyFullName = string.Empty;
+                Console.WriteLine("Assembly {0} is loaded.", assemblyFullName);
+            };
 
             // TODO Create a new instance of DomainAssemblyLoader in MyDomain and unwrap it.
             DomainAssemblyLoader loader = null;
