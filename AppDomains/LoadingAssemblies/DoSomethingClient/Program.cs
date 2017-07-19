@@ -7,6 +7,7 @@ namespace DoSomethingClient
 {
     public class Program
     {
+        // NOTE If you have an issue and your code changes are not applied in run time, REBUILD THE WHOLE SOLUTION.
         public static void Main(string[] args)
         {
             var input = new Input
@@ -36,23 +37,34 @@ namespace DoSomethingClient
 
             Method1(input);
             //Method2(input);
+
+            Console.WriteLine("Press any key to exit.");
+            Console.ReadKey();
         }
 
         private static void Method1(Input input)
         {
-            // TODO: Create a domain with name MyDomain.
             var appDomainSetup = new AppDomainSetup
             {
                 ApplicationBase = AppDomain.CurrentDomain.BaseDirectory,
                 PrivateBinPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "MyDomain")
             };
+
+            // TODO Create a new domain with name MyDomain and appDomainSetup.
             AppDomain domain = null;
-            var loader = (DomainAssemblyLoader)domain.CreateInstanceAndUnwrap(Assembly.GetExecutingAssembly().FullName, typeof(DomainAssemblyLoader).FullName);
+
+            // TODO Create a new instance of DomainAssemblyLoader in MyDomain and unwrap it by using CreateInstanceAndUnwrap method and specifying class name.
+            DomainAssemblyLoader loader = null; // domain.MethodName(Assembly.GetExecutingAssembly().FullName, typeof(ClassName).FullName);
 
             try
             {
-                Result result = null; // TODO: Use loader here.
-                result = loader.Load("MyLibrary, Version=1.2.3.4, Culture=neutral, PublicKeyToken=f46a87b3d9a80705", input);
+                IDoSomething doSomething = null;
+                var assemblyString = "MyLibrary, Version=1.2.3.4, Culture=neutral, PublicKeyToken=f46a87b3d9a80705";
+
+                doSomething = loader.Load<IDoSomething>(assemblyString);
+                var result = doSomething.DoSomething(input);
+
+                // TODO Put a breakpoint here and take a look at doSomething and result variables in the run time.
 
                 Console.WriteLine("Method1: {0}", result.Value);
             }
@@ -61,8 +73,7 @@ namespace DoSomethingClient
                 Console.WriteLine("Exception: {0}", e.Message);
             }
 
-            // TODO: Unload domain
-            AppDomain.Unload(domain);
+            // TODO: Unload app. domain.
         }
 
         private static void Method2(Input input)

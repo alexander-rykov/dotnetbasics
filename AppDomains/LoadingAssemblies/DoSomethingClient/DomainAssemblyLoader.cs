@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Reflection;
 using MyInterfaces;
 
@@ -6,24 +7,46 @@ namespace DoSomethingClient
 {
     public class DomainAssemblyLoader : MarshalByRefObject
     {
-        // Before making this call make sure that MyInterface assembly is signed with mykey.snk file. See Signing tab in MyInterface project properties editor.
-        // Usage:
-        // result = loader.Load("MyLibrary, Version=1.2.3.4, Culture=neutral, PublicKeyToken=f46a87b3d9a80705", input)
-        public Result Load(string assemblyString, Input data)
+        // NOTE Before making this call make sure that MyInterface assembly is signed with mykey.snk file. See Signing tab in MyInterface project properties editor.
+        public IDoSomething Load<T>(string assemblyString)
         {
-            // LoadFile() doesn't bind through Fusion at all - the loader just goes ahead and loads exactly what the caller requested.
-            // It doesn't use either the Load or the LoadFrom context.
-            // LoadFile() has a catch. Since it doesn't use a binding context, its dependencies aren't automatically found in its directory. 
+            // TODO Load an assembly using assemblyString and a static method of Assembly class.
+            Assembly assembly = null;
 
-            var assembly = Assembly.Load(assemblyString);
-            var types = assembly.GetTypes();
+            // TODO Get all types that are loaded in the assembly.
+            Type[] types = null;
 
-            // TODO: Find first type that has DoSomething attribute and implements IDoSomething.
-            // TODO: Create an instance of this type.
+            // TODO Get a type instance of the IDoSomething interface.
+            Type interfaceType = null;
 
-            IDoSomething doSomethingService = null; // TODO Save instance to variable.
-            return doSomethingService.DoSomething(data);
+            // TODO Get a type instance of the DoSomethingAttribute class.
+            Type attributeType = null;
+
+            // Find first type that has DoSomething attribute (use GetCustom... method) and implements IDoSomething (use IsAssignable method).
+            Func<Type, bool> implementsInterfaceAndHasAttribute = (Type t) =>
+            {
+                return
+                    // TODO Uncomment the next line and put correct method name there. Remove false.
+                    // interfaceType.MethodName(t)
+                    false
+                    &&
+                    // TODO Uncomment the next line and put correct method name there. Remove false.
+                    // t.MethodName().Any(t2 => t2.GetType() == attributeType);
+                    false;
+            };
+
+            // TODO Use appropriate LINQ method on types array with implementsInterfaceAndHasAttribute delegate to find the type that matches all criteria. Only one type is expected, exception should be thrown otherwise.
+            Type doSomethingType = null;
+
+            // TODO Create an instance of doSomethingType using static method of Activator class.
+            IDoSomething doSomethingService = (IDoSomething)null;
+
+            return doSomethingService;
         }
+
+        // LoadFile() doesn't bind through Fusion at all - the loader just goes ahead and loads exactly what the caller requested.
+        // It doesn't use either the Load or the LoadFrom context.
+        // LoadFile() has a catch. Since it doesn't use a binding context, its dependencies aren't automatically found in its directory. 
 
         // Usage:
         // var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"MyDomain\MyLibrary.dll");

@@ -1,4 +1,6 @@
-﻿namespace MyInterfaces
+﻿using System;
+
+namespace MyInterfaces
 {
     public class Result
     {

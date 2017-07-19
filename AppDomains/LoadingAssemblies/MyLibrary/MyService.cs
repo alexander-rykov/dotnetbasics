@@ -1,4 +1,5 @@
-﻿using MyInterfaces;
+﻿using System;
+using MyInterfaces;
 
 namespace MyLibrary
 {
@@ -7,6 +8,8 @@ namespace MyLibrary
     {
         public Result DoSomething(Input input)
         {
+            Console.WriteLine("MyService.DoSomething runs in {0}.", AppDomain.CurrentDomain.FriendlyName);
+
             int total = 0;
 
             foreach (var item in input.Users)
