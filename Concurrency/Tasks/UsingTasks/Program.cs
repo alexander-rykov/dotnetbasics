@@ -36,6 +36,7 @@ namespace UsingTasks
                 var index = i;
 
                 // TODO Create a new task using static Task method, queue it to run, and save the task to tasks array. Use the block below as an Action delegate parameter.
+                var task = Task<int>.Factory.StartNew(() =>
                 {
                     Console.WriteLine("Task {0} is started. Downloading {1}", Task.CurrentId, urls[index]);
 
@@ -48,7 +49,9 @@ namespace UsingTasks
                     Console.WriteLine("Task {0} is completed.", Task.CurrentId);
 
                     // TODO Make occurences variable a task result.
+                    return i;
                 }
+                tasks[index] = task;
             }
 
             Console.WriteLine("Waiting for tasks to complete.");
@@ -56,6 +59,7 @@ namespace UsingTasks
             try
             {
                 // TODO Use tasks array to wait until all the tasks will complete their work.
+                Task.WaitAll(tasks);
             }
             catch
             {
