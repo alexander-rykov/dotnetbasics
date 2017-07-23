@@ -10,18 +10,36 @@ namespace ExceptionHandling_Task
     {
       //TODO: create custom type exception and throw it when content parameter is empty string or null
 
-      using (var stream = new FileStream(filePath, FileMode.Open, FileAccess.Write))
+      FileStream stream = null;
+
+
+      //TODO avoid try/catch usage here by "using" operator usage
+      try
       {
+        stream = new FileStream(filePath, FileMode.Open, FileAccess.Write);
+
         var bytes = Encoding.Unicode.GetBytes(content);
 
         await stream.WriteAsync(bytes, 0, bytes.Length);
+      }
+      finally
+      {
+        if (stream != null)
+        {
+          stream.Dispose();
+        }
       }
     }
 
     public async Task<string> ReadStringFromFileAsync(string filePath)
     {
-      using (var stream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+      FileStream stream = null;
+
+      //TODO avoid try/catch usage here by "using" operator usage
+      try
       {
+        stream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
+
         var count = stream.Length;
 
         var bytes = new byte[count];
@@ -31,6 +49,13 @@ namespace ExceptionHandling_Task
         var content = Encoding.Unicode.GetString(bytes);
 
         return content;
+      }
+      finally
+      {
+        if (stream != null)
+        {
+          stream.Dispose();
+        }
       }
     }
   }
