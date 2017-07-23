@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbstractClassAndInterface_T
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentBuilder", "FluentBuilder\FluentBuilder.csproj", "{5ECE61AD-BED3-4653-BCE5-626203D548C3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CollectionInterfaces", "CollectionInterfaces\CollectionInterfaces.csproj", "{EB290B19-C14C-4DA8-A4EA-B01838153FD5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{5ECE61AD-BED3-4653-BCE5-626203D548C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5ECE61AD-BED3-4653-BCE5-626203D548C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5ECE61AD-BED3-4653-BCE5-626203D548C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB290B19-C14C-4DA8-A4EA-B01838153FD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB290B19-C14C-4DA8-A4EA-B01838153FD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB290B19-C14C-4DA8-A4EA-B01838153FD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB290B19-C14C-4DA8-A4EA-B01838153FD5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
