@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.4
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Generics_Task", "Generics_Task\Generics_Task.csproj", "{B10F38CF-332C-4B23-A62E-069FE8742B1B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItemStorage", "ItemStorage\ItemStorage.csproj", "{579ED4A9-5800-4824-B26E-202BF4ADF65A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B10F38CF-332C-4B23-A62E-069FE8742B1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B10F38CF-332C-4B23-A62E-069FE8742B1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B10F38CF-332C-4B23-A62E-069FE8742B1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B10F38CF-332C-4B23-A62E-069FE8742B1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{579ED4A9-5800-4824-B26E-202BF4ADF65A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{579ED4A9-5800-4824-B26E-202BF4ADF65A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{579ED4A9-5800-4824-B26E-202BF4ADF65A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{579ED4A9-5800-4824-B26E-202BF4ADF65A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
