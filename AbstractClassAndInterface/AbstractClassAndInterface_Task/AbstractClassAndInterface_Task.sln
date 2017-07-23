@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26430.4
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbstractClassAndInterface_Task", "AbstractClassAndInterface_Task\AbstractClassAndInterface_Task.csproj", "{1DA43E3C-4FC4-4D0E-974F-EA98AC83CB02}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentBuilder", "FluentBuilder\FluentBuilder.csproj", "{5ECE61AD-BED3-4653-BCE5-626203D548C3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{1DA43E3C-4FC4-4D0E-974F-EA98AC83CB02}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1DA43E3C-4FC4-4D0E-974F-EA98AC83CB02}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1DA43E3C-4FC4-4D0E-974F-EA98AC83CB02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5ECE61AD-BED3-4653-BCE5-626203D548C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5ECE61AD-BED3-4653-BCE5-626203D548C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5ECE61AD-BED3-4653-BCE5-626203D548C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5ECE61AD-BED3-4653-BCE5-626203D548C3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
