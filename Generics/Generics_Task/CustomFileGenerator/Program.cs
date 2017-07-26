@@ -1,0 +1,64 @@
+﻿using ItemStorage.Models;
+using ItemStorage.StorageProvider;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CustomFileGenerator
+{
+  class Program
+  {
+    static void Main(string[] args)
+    {
+      GenerateFiles();
+    }
+
+    public static void GenerateFiles()
+    {
+      var contentSize = 10;
+      var filesCount = 10;
+
+      var files = new List<CustomFile>();
+      for (var i = 0; i < filesCount; ++i)
+      {
+        files.Add(CustomTextFileGenerator.GenerateLargeTestFile(contentSize));
+      }
+
+      var storage = new StorageProvider(@"F:\Dev\.net lab training\dotnetbasics\Generics\Generics_Task\Generics_Task\bin\Debug\Blob Storage");
+
+      string fileName = null;
+
+      foreach (var file in files)
+      {
+        storage.AddObject(file);
+        fileName = file.BlobName;
+      }
+    }
+  }
+
+  public class CustomTextFileGenerator
+  {
+    public static CustomFile GenerateLargeTestFile(int contentSize)
+    {
+      var generatedString = RandomString(contentSize);
+
+      var fileContent = Encoding.Unicode.GetBytes(generatedString);
+
+      var customFile = new CustomFile(Guid.NewGuid() + ".testfile", fileContent);
+
+      return customFile;
+    }
+
+    private static string RandomString(int Size)
+    {
+      var random = new Random();
+
+      const string input = "abcdefghijklmnopqrstuvwxyz0123456789";
+      var chars = Enumerable.Range(0, Size)
+                             .Select(x => input[random.Next(0, input.Length)]);
+      return new string(chars.ToArray());
+    }
+  }
+}

@@ -11,5 +11,7 @@ namespace ItemStorage.StorageProvider
     void UpdateObject(CustomFile file);
 
     void DeleteObject(string FileName);
+
+    string[] GetFileNames();
   }
 }
