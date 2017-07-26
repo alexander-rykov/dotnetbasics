@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItemStorage", "ItemStorage\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomFileGenerator", "CustomFileGenerator\CustomFileGenerator.csproj", "{BE7BF21C-6CD8-4836-AD44-8432FD8E4637}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Generics_Task.Tests", "Generics_Task.Tests\Generics_Task.Tests.csproj", "{3D72623C-1697-424E-BC78-6E8DB605D98C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{BE7BF21C-6CD8-4836-AD44-8432FD8E4637}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE7BF21C-6CD8-4836-AD44-8432FD8E4637}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE7BF21C-6CD8-4836-AD44-8432FD8E4637}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D72623C-1697-424E-BC78-6E8DB605D98C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D72623C-1697-424E-BC78-6E8DB605D98C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D72623C-1697-424E-BC78-6E8DB605D98C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D72623C-1697-424E-BC78-6E8DB605D98C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

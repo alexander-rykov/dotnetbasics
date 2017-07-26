@@ -45,7 +45,6 @@
     <Compile Include="BatchResult.cs" />
     <Compile Include="BulkProcessing\BlobBulkDeleteService.cs" />
     <Compile Include="BulkProcessing\BlobBulkMetadataUpdateService.cs" />
-    <Compile Include="BulkProcessing\BlobBulkProcessingService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

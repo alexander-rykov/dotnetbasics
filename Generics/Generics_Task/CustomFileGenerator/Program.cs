@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace CustomFileGenerator
 {
-  class Program
+  public class Generator
   {
     static void Main(string[] args)
     {
-      GenerateFiles();
+      GenerateFiles(@"..\..\..\Generics_Task\bin\Debug\Blob Storage");
     }
 
-    public static void GenerateFiles()
+    public static void GenerateFiles(string path)
     {
       var contentSize = 10;
       var filesCount = 10;
@@ -26,7 +26,7 @@ namespace CustomFileGenerator
         files.Add(CustomTextFileGenerator.GenerateLargeTestFile(contentSize));
       }
 
-      var storage = new StorageProvider(@"..\..\..\Generics_Task\bin\Debug\Blob Storage");
+      var storage = new StorageProvider(path);
 
       string fileName = null;
 

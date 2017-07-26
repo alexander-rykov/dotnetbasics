@@ -1,12 +1,50 @@
 ﻿using System;
 using ItemStorage.StorageProvider;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Generics_Task.BulkProcessing
 {
-  public class BlobBulkDeleteService : BlobBulkProcessing<BlobProcessContext>
+  public class BlobProcessContext
   {
-    public BlobBulkDeleteService(IStorageProvider azureBlobStreamStore) : base(azureBlobStreamStore) { }
-    protected override void ProcessFile(BlobProcessContext blobProcessObject)
+    public string FileName { get; set; }
+  }
+
+  //TODO: Create base abstract class for BlobBulkMetadataUpdateService and BlobBulkDeleteService using generics
+  public class BlobBulkDeleteService
+  {
+    protected readonly IStorageProvider _storageProvider;
+
+    public BlobBulkDeleteService(IStorageProvider storageProvider)
+    {
+      _storageProvider = storageProvider;
+    }
+
+    public BatchResult BulkProcessing(IEnumerable<BlobProcessContext> processObjects)
+    {
+      var aggregateResult = new BatchResult();
+
+      var lockList = new object();
+
+      Parallel.ForEach(processObjects, processObject =>
+      {
+        try
+        {
+          ProcessFile(processObject);
+        }
+        catch (Exception e)
+        {
+          lock (lockList)
+          {
+            aggregateResult.AddError($"Processing document {processObject.FileName} failed: {e.Message}");
+          }
+        }
+      });
+
+      return aggregateResult;
+    }
+
+    public void ProcessFile(BlobProcessContext blobProcessObject)
     {
       try
       {
