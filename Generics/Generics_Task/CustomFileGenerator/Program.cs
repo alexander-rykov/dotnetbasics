@@ -26,7 +26,7 @@ namespace CustomFileGenerator
         files.Add(CustomTextFileGenerator.GenerateLargeTestFile(contentSize));
       }
 
-      var storage = new StorageProvider(@"F:\Dev\.net lab training\dotnetbasics\Generics\Generics_Task\Generics_Task\bin\Debug\Blob Storage");
+      var storage = new StorageProvider(@"..\..\..\Generics_Task\bin\Debug\Blob Storage");
 
       string fileName = null;
 

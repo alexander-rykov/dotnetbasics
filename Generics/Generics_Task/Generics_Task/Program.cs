@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Generics_Task.BulkProcessing;
 using ItemStorage.Models;
 using ItemStorage.StorageProvider;
 
@@ -12,50 +13,28 @@ namespace Generics_Task
   {
     static void Main(string[] args)
     {
-      //GenerateFiles();
-    }
+      var storageProvider = new StorageProvider("Blob Storage");
 
-    public static void GenerateFiles()
-    {
-      var contentSize = 10;
-      var filesCount = 10;
+      var fileNames = storageProvider.GetFileNames();
 
-      var files = new List<CustomFile>();
-      for (var i = 0; i < filesCount; ++i)
+      var blobBulkMetadataUpdateService = new BlobBulkMetadataUpdateService(storageProvider);
+      var metaData = new Dictionary<string, string> { { "GonnaDeleteThis", "True" } };
+
+      blobBulkMetadataUpdateService.BulkProcessing(fileNames.Select(fileName => new BlobProcessMetadataContext
       {
-        files.Add(CustomTextFileGenerator.GenerateLargeTestFile(contentSize));
-      }
+        FileName = fileName,
+        Metadata = metaData
+      }));
 
-      var storage = new StorageProvider("Blob Storage");
+      var obj = storageProvider.GetObject(fileNames[0]);
 
-      foreach (var file in files)
+      var blobBulkDeleteService = new BlobBulkDeleteService(storageProvider);
+
+      blobBulkDeleteService.BulkProcessing(fileNames.Select(fileName => new BlobProcessContext
       {
-        storage.AddObject(file);
-      }
-    }
-  }
-
-  public class CustomTextFileGenerator
-  {
-    public static CustomFile GenerateLargeTestFile(int contentSize)
-    {
-      var generatedString = RandomString(contentSize);
-
-      var fileContent = Encoding.Unicode.GetBytes(generatedString);
-
-      var customFile = new CustomFile(Guid.NewGuid() + ".testfile", fileContent);
-
-      return customFile;
+        FileName = fileName
+      }));
     }
 
-    private static string RandomString(int Size)
-    {
-      var random = new Random();
-
-      const string input = "abcdefghijklmnopqrstuvwxyz0123456789";
-      var chars = Enumerable.Range(0, Size)
-                             .Select(x => input[random.Next(0, input.Length)]);
-      return new string(chars.ToArray());
-    }
   }
 }

@@ -11,13 +11,13 @@ namespace ItemStorage.StorageProvider
   {
     private class StorageFileInfo
     {
-      public string FilePath { get; set; }
+      public string PhysicalFileName { get; set; }
 
       public string BlobName { get; set; }
 
       public override string ToString()
       {
-        return $"{this.FilePath} - {this.BlobName}";
+        return $"{this.PhysicalFileName} - {this.BlobName}";
       }
     }
 
@@ -49,7 +49,7 @@ namespace ItemStorage.StorageProvider
       this.SerializeCustomFile(filePath, file);
       this.Indexes.Add(new StorageFileInfo
       {
-        FilePath = filePath,
+        PhysicalFileName = filePath,
         BlobName = file.BlobName
       });
     }
@@ -60,8 +60,22 @@ namespace ItemStorage.StorageProvider
 
       var storageFileInfo = this.GetStorageFileInfo(blobName);
 
-      File.Delete(storageFileInfo.FilePath);
+      File.Delete(this.GetFullPath(storageFileInfo.PhysicalFileName));
       this.Indexes.Remove(this.Indexes.SingleOrDefault(item => item.BlobName == blobName));
+    }
+
+    public void UpdateObjectMetadata(string blobName, IDictionary<string, string> metaData)
+    {
+      var storageFileInfo = this.GetObject(blobName);
+
+      storageFileInfo.Metadata.Clear();
+
+      foreach (var key in metaData.Keys)
+      {
+        storageFileInfo.Metadata.Add(key, metaData[key]);
+      }
+
+      this.UpdateObject(storageFileInfo);
     }
 
     public CustomFile GetObject(string blobName)
@@ -70,7 +84,7 @@ namespace ItemStorage.StorageProvider
 
       var storageFileInfo = this.GetStorageFileInfo(blobName);
 
-      var customFile = this.DeserializeCustomFile(storageFileInfo.FilePath);
+      var customFile = this.DeserializeCustomFile(storageFileInfo.PhysicalFileName);
 
       return customFile;
     }
@@ -81,7 +95,7 @@ namespace ItemStorage.StorageProvider
 
       var storageFileInfo = this.GetStorageFileInfo(file.BlobName);
 
-      this.SerializeCustomFile(storageFileInfo.FilePath, file);
+      this.SerializeCustomFile(storageFileInfo.PhysicalFileName, file);
     }
 
     public string[] GetFileNames()
@@ -100,7 +114,7 @@ namespace ItemStorage.StorageProvider
 
     private CustomFile DeserializeCustomFile(string filePath)
     {
-      using (var stream = File.Open(filePath, FileMode.Open))
+      using (var stream = File.Open(GetFullPath(filePath), FileMode.Open))
       {
         var binaryFormatter = new BinaryFormatter();
         var customFile = (CustomFile)binaryFormatter.Deserialize(stream);
@@ -123,15 +137,19 @@ namespace ItemStorage.StorageProvider
 
     private List<StorageFileInfo> GetIndexes()
     {
+      CheckDirectory();
+
       var indexes = new List<StorageFileInfo>();
 
       foreach (var filePath in Directory.EnumerateFiles(this.DirectoryName))
       {
-        var customFile = this.DeserializeCustomFile(filePath);
+        var fileName = Path.GetFileName(filePath);
+
+        var customFile = this.DeserializeCustomFile(fileName);
 
         indexes.Add(new StorageFileInfo
         {
-          FilePath = Path.GetFileName(filePath),
+          PhysicalFileName = fileName,
           BlobName = customFile.BlobName
         });
       }
@@ -145,5 +163,5 @@ namespace ItemStorage.StorageProvider
     }
   }
 
-  
+
 }
