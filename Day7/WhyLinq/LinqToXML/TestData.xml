@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Students>
+  <Student ID="1">
+    <Name>Test1</Name>
+    <Salary>12000</Salary>
+  </Student>
+  <Student ID="2">
+    <Name>Test2</Name>
+    <Salary>14000</Salary>
+  </Student>
+  <Student ID="3">
+    <Name>Test3 </Name>
+    <Salary>8000</Salary>
+  </Student>
+</Students>
