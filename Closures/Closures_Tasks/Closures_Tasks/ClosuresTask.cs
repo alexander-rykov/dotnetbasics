@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Closures_Tasks
@@ -10,7 +12,16 @@ namespace Closures_Tasks
     {
       var closuresTask = new ClosuresTask();
 
+      var stopWatch = new Stopwatch();
+      stopWatch.Start();
+
       closuresTask.Start();
+
+      stopWatch.Stop();
+      var elapsed = stopWatch.Elapsed;
+      var elapsedTime = $"{elapsed.Hours:00}:{elapsed.Minutes:00}:{elapsed.Seconds:00}.{elapsed.Milliseconds / 10:00}";
+
+      Console.WriteLine($"Required time: {elapsedTime}");
     }
   }
 
@@ -61,6 +72,9 @@ namespace Closures_Tasks
     public static void Process(int item)
     {
       // processing the item (e.g. sending its value to the specified service)
+
+      // Imitation of hard work (e.g. call to remote service to get some data)
+      Thread.Sleep(TimeSpan.FromSeconds(2));
 
       var value = random.Next(1, 10);
       if (value > 6)
