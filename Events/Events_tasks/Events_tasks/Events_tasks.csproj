@@ -42,7 +42,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ObservablePattern.cs" />
+    <Compile Include="Models\StockInfo.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Observables\IObservable.cs" />
+    <Compile Include="Observables\Stock.cs" />
+    <Compile Include="Observers\Bank.cs" />
+    <Compile Include="Observers\Broker.cs" />
+    <Compile Include="Observers\IObserver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
