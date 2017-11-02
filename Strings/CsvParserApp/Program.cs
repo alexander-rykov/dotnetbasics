@@ -11,6 +11,7 @@ namespace CsvParserApp
     {
         public static void Main(string[] args)
         {
+            // Open project properties, go on Debug tab and find Command line arguments there.
             var moviesPath = GetFilePath(args, "movies");
             var ratingsPath = GetFilePath(args, "ratings");
             var tagsPath = GetFilePath(args, "tags");
@@ -32,8 +33,7 @@ namespace CsvParserApp
                 string[] array;
 
                 // TODO: Replace the line below with your code to get a command line parameter value. Use only System.String type methods here.
-                // array = new[] { string.Empty, string.Empty };
-                array = arg.TrimStart('-').Split('=');
+                array = new[] { string.Empty, string.Empty };
 
                 string parameterName = array[0];
 
