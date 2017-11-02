@@ -5,6 +5,7 @@ using System.Text;
 
 namespace CustomAttributes
 {
+    [DebuggerDisplay("{DebuggerDisplay}")]
     public class MyProxyService : IMyService
     {
         private readonly Type _interfaceType;
@@ -23,6 +24,8 @@ namespace CustomAttributes
             _serviceType = service.GetType();
         }
 
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        [DebuggerHidden]
         public string MyProperty
         {
             get
@@ -34,6 +37,8 @@ namespace CustomAttributes
             }
         }
 
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        [DebuggerHidden]
         public int AnotherProperty
         {
             get
@@ -45,6 +50,7 @@ namespace CustomAttributes
             }
         }
 
+        [DebuggerHidden]
         public int DoSomething(string stringParameter, int parameter)
         {
             var parameterTypes = new[] { typeof(string), typeof(int) };
@@ -91,6 +97,7 @@ namespace CustomAttributes
             }
         }
 
+        [DebuggerHidden]
         public int DoSomethingElse(int x, int y)
         {
             // TODO Add new implementation here to handle RedirectMethodCall attribute.
@@ -98,5 +105,8 @@ namespace CustomAttributes
 
             throw new NotImplementedException("DoSomethingElse");
         }
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private string DebuggerDisplay => $"Proxy for {_serviceType.FullName}";
     }
 }
