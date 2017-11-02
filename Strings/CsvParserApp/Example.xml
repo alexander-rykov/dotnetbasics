@@ -1,0 +1,31 @@
+﻿<?xml version="1.0"?>
+<database xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.epam.com/schemas/rd/MovieDatabase.xsd">
+  <movieList>
+    <movieItem movieId="1" movieTitle="Movie" movieYear="1992">
+      <movieGenres>
+        <movieGenre genreName="Thriller" />
+      </movieGenres>
+      <movieTags>
+        <movieTag userId="1">
+          <text>Tag Text</text>
+          <timestamp>636452657178441832</timestamp>
+        </movieTag>
+      </movieTags>
+      <movieRatings>
+        <movieRating userId="1" rating="3.4">
+          <timestamp>636452657178481867</timestamp>
+        </movieRating>
+      </movieRatings>
+    </movieItem>
+  </movieList>
+  <userList>
+    <userItem userId="1" userName="Alex">
+      <tags>
+        <tag>1</tag>
+      </tags>
+      <ratings>
+        <rating>1</rating>
+      </ratings>
+    </userItem>
+  </userList>
+</database>

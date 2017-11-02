@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using CsvParserApp.CsvModel;
+using CsvParserApp.CsvModels;
 using CsvParserApp.Models;
 
 namespace CsvParserApp

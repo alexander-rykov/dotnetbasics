@@ -1,26 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using CsvParserApp.CsvModel;
+using CsvParserApp.CsvModels;
 using CsvParserApp.Models;
 
 namespace CsvParserApp
 {
-    // TODO Download MovieLens latest small dataset from https://grouplens.org/datasets/movielens/, extract csv files and copy them to the current bin folder.
     public class Program
     {
         public static void Main(string[] args)
         {
-            // NOTE Open project properties, go on Debug tab and find Command line arguments there.
+            // NOTE 1. Download MovieLens latest small dataset from https://grouplens.org/datasets/movielens/, extract csv files and copy them to the current bin folder.
+            // NOTE 2. Open project properties, go on Debug tab and add Command line arguments there "--movies=movies.csv --ratings=ratings.csv --tags=tags.csv --output=database.xml".
+
             var moviesPath = GetFilePath(args, "movies");
             var ratingsPath = GetFilePath(args, "ratings");
             var tagsPath = GetFilePath(args, "tags");
+            var output = GetFilePath(args, "output");
 
             var moviesDataSet = LoadMovieDataSet(moviesPath, ratingsPath, tagsPath, new MovieDataSetBuilder());
 
             Console.WriteLine("Movies in data set: {0}", moviesDataSet.Movies.Count);
             Console.WriteLine("Genres in data set: {0}", moviesDataSet.Genres.Count);
             Console.WriteLine("Users in data set: {0}", moviesDataSet.Users.Count);
+
+            SaveToXml(moviesDataSet, output);
 
             Console.WriteLine("\nPress enter key to exit.");
             Console.ReadLine();
@@ -80,7 +84,6 @@ namespace CsvParserApp
 
             using (var streamReader = new StreamReader(tagsPath))
             {
-                // TODO Implement loading tag data from CSV file.
                 builder.AddTags(LoadTagsFromFile());
             }
 
@@ -101,7 +104,16 @@ namespace CsvParserApp
 
         private static IList<TagRow> LoadTagsFromFile()
         {
+            // TODO Implement loading tag data from CSV file.
             return new TagRow[] { };
+        }
+
+        private static void SaveToXml(MovieDataSet movieDataSet, string outputPath)
+        {
+            using (var fileStream = new FileStream(outputPath, FileMode.Create))
+            {
+                // TODO Implement XML serialization using XmlModels classes and XmlSerializer. Use Example.xml as an example for XML structure.
+            }
         }
     }
 }

@@ -43,9 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CsvModel\MovieRow.cs" />
-    <Compile Include="CsvModel\RatingRow.cs" />
-    <Compile Include="CsvModel\TagRow.cs" />
+    <Compile Include="CsvModels\MovieRow.cs" />
+    <Compile Include="CsvModels\RatingRow.cs" />
+    <Compile Include="CsvModels\TagRow.cs" />
     <Compile Include="IMovieDataSetBuilder.cs" />
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\Movie.cs" />
@@ -56,9 +56,18 @@
     <Compile Include="MovieDataSetBuilder.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="XmlModels\Movie.cs" />
+    <Compile Include="XmlModels\MovieDatabase.cs" />
+    <Compile Include="XmlModels\MovieGenre.cs" />
+    <Compile Include="XmlModels\MovieRating.cs" />
+    <Compile Include="XmlModels\MovieTag.cs" />
+    <Compile Include="XmlModels\User.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Example.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

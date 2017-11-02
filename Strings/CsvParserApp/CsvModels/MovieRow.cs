@@ -1,4 +1,4 @@
-﻿namespace CsvParserApp.CsvModel
+﻿namespace CsvParserApp.CsvModels
 {
     public class MovieRow
     {
