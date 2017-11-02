@@ -1,6 +1,6 @@
 ﻿namespace CsvParserApp.CsvModel
 {
-    internal class MovieRow
+    public class MovieRow
     {
         public int Id { get; set; }
 

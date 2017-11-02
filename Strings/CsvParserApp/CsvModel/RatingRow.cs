@@ -1,6 +1,6 @@
 ﻿namespace CsvParserApp.CsvModel
 {
-    internal class RatingRow
+    public class RatingRow
     {
         public int UserId { get; set; }
 

@@ -11,12 +11,12 @@ namespace CsvParserApp
     {
         public static void Main(string[] args)
         {
-            // Open project properties, go on Debug tab and find Command line arguments there.
+            // NOTE Open project properties, go on Debug tab and find Command line arguments there.
             var moviesPath = GetFilePath(args, "movies");
             var ratingsPath = GetFilePath(args, "ratings");
             var tagsPath = GetFilePath(args, "tags");
 
-            var moviesDataSet = LoadMovieDataSet(moviesPath, ratingsPath, tagsPath);
+            var moviesDataSet = LoadMovieDataSet(moviesPath, ratingsPath, tagsPath, new MovieDataSetBuilder());
 
             Console.WriteLine("Movies in data set: {0}", moviesDataSet.Movies.Count);
             Console.WriteLine("Genres in data set: {0}", moviesDataSet.Genres.Count);
@@ -46,8 +46,13 @@ namespace CsvParserApp
             throw new Exception(string.Format("expectedParameter {0} is not found.", expectedParameter));
         }
 
-        private static MovieDataSet LoadMovieDataSet(string moviesPath, string ratingsPath, string tagsPath)
+        private static MovieDataSet LoadMovieDataSet(string moviesPath, string ratingsPath, string tagsPath, IMovieDataSetBuilder builder)
         {
+            if (builder == null)
+            {
+                throw new ArgumentNullException(nameof(builder));
+            }
+
             if (File.Exists(moviesPath) == false)
             {
                 throw new Exception(string.Format("file {0} is not exists.", moviesPath));
@@ -63,65 +68,40 @@ namespace CsvParserApp
                 throw new Exception(string.Format("file {0} is not exists.", tagsPath));
             }
 
-            IList<MovieRow> movieRows;
-            IList<RatingRow> ratingRows;
-            IList<TagRow> tagRows;
-
             using (var streamReader = new StreamReader(moviesPath))
             {
-                // TODO Implement loading movie data from CSV file.
-                movieRows = LoadMoviesFromFile();
+                builder.AddMovies(LoadMoviesFromFile());
             }
 
             using (var streamReader = new StreamReader(ratingsPath))
             {
-                // TODO Implement loading rating data from CSV file.
-                ratingRows = LoadRatingsFromFile();
+                builder.AddRatings(LoadRatingsFromFile());
             }
 
             using (var streamReader = new StreamReader(tagsPath))
             {
                 // TODO Implement loading tag data from CSV file.
-                tagRows = LoadTagsFromFile();
+                builder.AddTags(LoadTagsFromFile());
             }
 
-            return ConvertToMovieDataSet(movieRows, ratingRows, tagRows);
+            return builder.Build();
         }
 
         private static IList<MovieRow> LoadMoviesFromFile()
         {
+            // TODO Implement loading movie data from CSV file.
             return new MovieRow[] { };
         }
 
         private static IList<RatingRow> LoadRatingsFromFile()
         {
+            // TODO Implement loading rating data from CSV file.
             return new RatingRow[] { };
         }
 
         private static IList<TagRow> LoadTagsFromFile()
         {
             return new TagRow[] { };
-        }
-
-        private static MovieDataSet ConvertToMovieDataSet(IList<MovieRow> movieRows, IList<RatingRow> ratingRows, IList<TagRow> tagRows)
-        {
-            if (movieRows == null)
-            {
-                throw new ArgumentNullException(nameof(movieRows));
-            }
-
-            if (ratingRows == null)
-            {
-                throw new ArgumentNullException(nameof(ratingRows));
-            }
-
-            if (tagRows == null)
-            {
-                throw new ArgumentNullException(nameof(tagRows));
-            }
-
-            // TODO Implement functionality to convert raw data into the data set model.
-            return new MovieDataSet();
         }
     }
 }

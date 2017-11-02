@@ -1,6 +1,6 @@
 ﻿namespace CsvParserApp.CsvModel
 {
-    internal class TagRow
+    public class TagRow
     {
         public int UserId { get; set; }
 

@@ -46,12 +46,14 @@
     <Compile Include="CsvModel\MovieRow.cs" />
     <Compile Include="CsvModel\RatingRow.cs" />
     <Compile Include="CsvModel\TagRow.cs" />
+    <Compile Include="IMovieDataSetBuilder.cs" />
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\MovieDataSet.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserRating.cs" />
     <Compile Include="Models\UserTag.cs" />
+    <Compile Include="MovieDataSetBuilder.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
