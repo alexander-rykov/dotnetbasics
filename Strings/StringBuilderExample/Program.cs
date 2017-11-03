@@ -7,7 +7,7 @@ namespace StringBuilderExample
     {
         public static void Main(string[] args)
         {
-            var sb = new StringBuilder(10000);
+            var sb = new StringBuilder();
 
             for (int i = 0; i < 1000; i++)
             {
