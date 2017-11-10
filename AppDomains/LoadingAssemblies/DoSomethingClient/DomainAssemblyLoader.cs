@@ -19,19 +19,15 @@ namespace DoSomethingClient
             // TODO Get a type instance of the IDoSomething interface.
             Type interfaceType = null;
 
-            // TODO Get a type instance of the DoSomethingAttribute class.
-            Type attributeType = null;
-
             // Find first type that has DoSomething attribute (use GetCustom... method) and implements IDoSomething (use IsAssignable method).
             Func<Type, bool> implementsInterfaceAndHasAttribute = (Type t) =>
             {
                 return
-                    // TODO Uncomment the next line and put correct method name there. Remove false.
+                    // TODO Uncomment the next line and put correct method name there to check that t type can be assigned to interfaceType. Remove false.
                     // interfaceType.MethodName(t)
                     false
                     &&
-                    // TODO Uncomment the next line and put correct method name there. Remove false.
-                    // t.MethodName().Any(t2 => t2.GetType() == attributeType);
+                    // TODO Use GetCustomAttribute method to check whether a t type has DoSomething attribute. Remove false.
                     false;
             };
 
@@ -57,9 +53,6 @@ namespace DoSomethingClient
 
             // TODO Get a type of an interface.
             Type interfaceType = null;
-
-            // TODO Get a type of an attribute.
-            Type attributeType = null;
 
             // Find first type that has DoSomething attribute and DO NOT implements IDoSomething.
             Func<Type, bool> hasAttributeAndDontImplementsInterface = (Type t) => 
