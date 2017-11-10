@@ -44,7 +44,6 @@ namespace UsingAppDomainEvents
                 }
 
                 throw new InvalidOperationException("Operation is invalid. Terminating an execution.");
-
             }
 
             // TODO Unload app. domain.

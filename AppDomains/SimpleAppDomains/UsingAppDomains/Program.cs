@@ -47,7 +47,7 @@ namespace UsingAppDomains
             {
                 Console.WriteLine("{0}", AppDomain.CurrentDomain.GetData("MyMessage"));
 
-                // TODO Fix a issue with accessing to myClass variable by creating a new static method and passing it as a delegate.
+                // TODO Fix an issue with accessing to myClass variable. Consider two options - using static field MyClass and SetData/GetData methods.
                 if (myClass == null)
                 {
                     Console.WriteLine("MyClass is null.");
@@ -56,12 +56,11 @@ namespace UsingAppDomains
                 {
                     myClass.IntValue = 2;
                 }
-            });
+            };
 
             Console.WriteLine("InValue is {0}", myClass.IntValue);
 
             // TODO Unload app. domain.
-            AppDomain.Unload(domain);
 
             Console.WriteLine("Press any key to exit.");
             Console.ReadKey();
